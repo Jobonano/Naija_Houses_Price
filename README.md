@@ -75,6 +75,8 @@ pip install -r requirements.txt
 
 You can interact with the model using a simple web interface.
 
+# Please Note that application of Streamlit here is only for example usage
+
 The app interface is already implemented in [`app.py`](./app.py). To launch it:
 
 ```bash
