@@ -1,7 +1,3 @@
-Here’s a professional `README.md` file you can use for your GitHub repository based on your code and results:
-
----
-
 # 🏠 Nigeria Real Estate Price Prediction
 
 This project is focused on predicting real estate prices in Nigeria using machine learning. The dataset contains housing features such as the number of bedrooms, bathrooms, toilets, parking spaces, and geographical location (state and town), along with the house title (e.g., Detached Duplex, Block of Flats).
@@ -91,16 +87,12 @@ pip install numpy pandas seaborn matplotlib scikit-learn xgboost
 
 ## 📌 Author
 
-**[Your Name]**  
-GitHub: [your-github-username](https://github.com/your-github-username)  
-Email: [your-email@example.com]
+**ANDREW JOSHUA ADOLE**  
+GitHub: jobonano(https://github.com/jobonano)  
+Email: joshuaandrew159@gmail.com
 
 ---
 
 ## 📜 License
 
 This project is licensed under the MIT License.
-
----
-
-Let me know if you want help formatting the repo itself or writing example usage in the README too!
