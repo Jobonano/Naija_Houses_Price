@@ -1,98 +1,126 @@
-# 🏠 Nigeria Real Estate Price Prediction
+# 🏠 Nigeria House Price Prediction
 
-This project is focused on predicting real estate prices in Nigeria using machine learning. The dataset contains housing features such as the number of bedrooms, bathrooms, toilets, parking spaces, and geographical location (state and town), along with the house title (e.g., Detached Duplex, Block of Flats).
-
-The aim is to develop a regression model that accurately estimates house prices and provides insights into real estate pricing patterns in Nigeria.
+Welcome to a machine learning project that predicts house prices across Nigeria based on detailed housing features and location data. Built with real-world listings and trained using powerful models, this project is aimed at helping developers, analysts, and real estate enthusiasts understand pricing dynamics in Nigeria's housing market.
 
 ---
 
-## 📁 Dataset
+## 📊 Project Highlights
 
-The dataset, `nigeria_houses_data.csv`, includes **24,326** Nigerian housing records with the following features:
+- ✅ **Over 24,000 real listings** analyzed
+- 🧠 **XGBoost Regressor** for accurate price prediction
+- 💡 Custom features like room-to-parking ratios
+- 📈 R² Score of **0.71 on unseen data**
+- 🌐 Deployed via **Streamlit** for real-time price estimation
+
+---
+
+## 📁 Dataset Overview
+
+Each record includes:
 
 - **Numerical**: `bedrooms`, `bathrooms`, `toilets`, `parking_space`, `price`
-- **Categorical**: `title`, `town`, `state`
+- **Categorical**: `title` (e.g. Duplex, Flats), `town`, `state`
 
-New engineered features include:
-- `bed_bath_ratio`: Ratio of bedrooms to bathrooms
-- `bath_toilet_ratio`: Ratio of bathrooms to toilets
-- `room_total`: Total of rooms (bedrooms + bathrooms + toilets)
-- `parking_per_room`: Parking space normalized by total room count
+Additional engineered features:
+
+- `bed_bath_ratio`, `bath_toilet_ratio`
+- `room_total`, `parking_per_room`
 
 ---
 
 ## 🧠 Model
 
-The model used is an **XGBoost Regressor**, trained on 24,000 data points.
+We're using **XGBoost Regressor** with the following hyperparameters:
 
-### 🔧 Model Parameters
+```python
+XGBRegressor(
+    objective='reg:squarederror',
+    n_estimators=100,
+    learning_rate=0.1,
+    max_depth=6,
+    random_state=42
+)
+```
 
-- **Objective**: `reg:squarederror`
-- **Estimators**: 100
-- **Learning Rate**: 0.1
-- **Max Depth**: 6
-- **Random State**: 42
+Trained on a log-transformed price (`log_price`) for better prediction stability.
 
 ---
 
 ## 📈 Evaluation Metrics
 
-On the **validation dataset**:
-
-- **MAE (Mean Absolute Error)**: `0.389`
-- **MSE (Mean Squared Error)**: `0.343`
-- **RMSE (Root Mean Squared Error)**: `0.586`
-- **R² Score**: `0.688`
-
-On the **unseen test data**:
-
-- **R² Score**: `0.709`
+| Metric       | Score    |
+|--------------|----------|
+| MAE          | 0.389    |
+| RMSE         | 0.586    |
+| R² Score     | 0.709 on test data |
 
 ---
 
-## 🛠 Preprocessing Steps
+## ⚙️ How to Use
 
-1. **Feature Engineering** – new columns were created from existing numerical features.
-2. **Encoding** – categorical features were transformed using one-hot encoding.
-3. **Normalization** – prices were log-transformed (`log_price`) to reduce skewness.
-4. **Data Splitting** – 24,000 records used for training; remaining used for evaluation.
-
----
-
-## 🔍 Insights
-
-- The model performs well on unseen data with an R² score above 0.70, suggesting strong predictive power.
-- Engineering domain-specific ratios like `bed_bath_ratio` and `parking_per_room` added value to the prediction quality.
-
----
-
-## 🚀 Future Improvements
-
-- Hyperparameter tuning using `GridSearchCV` or `Optuna`.
-- Testing other models like `LightGBM`, `CatBoost`, or deep learning.
-- Incorporating external economic indicators (e.g., inflation, location demand).
-- Deploying the model via Flask or FastAPI for real-time predictions.
-
----
-
-## 📚 Requirements
-
-To replicate this project, install the following:
+### 1. Clone the repository:
 
 ```bash
-pip install numpy pandas seaborn matplotlib scikit-learn xgboost
+git clone https://github.com/your-username/nigeria-house-price-prediction.git
+cd nigeria-house-price-prediction
+```
+
+### 2. Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Run the Streamlit App
+
+You can interact with the model using a simple web interface.
+
+The app interface is already implemented in [`app.py`](./app.py). To launch it:
+
+```bash
+streamlit run app.py
+```
+
+You’ll be prompted to enter the number of bedrooms, location, house type, etc., and get an instant price prediction.
+
+---
+
+## 📂 Project Structure
+
+```
+nigeria-house-price-prediction/
+│
+├── app.py                 # Streamlit app
+├── model.pkl              # Trained XGBoost model
+├── nigeria_houses_data.csv
+├── requirements.txt       # Dependencies
+├── README.md              # This file
 ```
 
 ---
 
-## 📌 Author
+## 🙌 Contribute
+
+Want to help improve the model, enhance the app, or add new features? Contributions are welcome!
+
+### Ideas:
+- Add new features (e.g., land size, year built)
+- Improve model performance
+- Integrate location map or visuals
+- Deploy on Streamlit Cloud or Hugging Face Spaces
+
+Fork the repo, open a PR, or just drop a message!
+
+---
+
+## 👤 Author
 
 **ANDREW JOSHUA ADOLE**  
-GitHub: jobonano(https://github.com/jobonano)  
-Email: joshuaandrew159@gmail.com
-
+📫 joshuaandrew159@gmail.com  
+🔗 [LinkedIn](https://linkedin.com/in/joshua-andrew-827018306)
+🔗 [GitHub](https://github.com/jobonano)
 ---
 
 ## 📜 License
 
-This project is licensed under the MIT License.
+This project is licensed under the **MIT License** — feel free to use, modify, and share!
